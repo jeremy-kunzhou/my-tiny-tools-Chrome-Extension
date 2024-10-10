@@ -64,7 +64,16 @@ function sendMessageToPopup(message, type) {
     message,
     type,
   };
-  chrome.runtime.sendMessage(obj);
+  chrome.runtime.sendMessage(obj).catch(e => {
+    // if interface hide, there will be a error:
+    // Error: Could not establish connection. Receiving end does not exist.
+    // so ignore this error
+    if (e.message.endsWith('Receiving end does not exist.')) {
+      // ignore
+    } else {
+      console.log(e)
+    }
+  });
 }
 
 let section = 1

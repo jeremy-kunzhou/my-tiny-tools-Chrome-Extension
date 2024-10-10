@@ -2,15 +2,16 @@
   "name": "My Tiny Tools",
   "version": "1.0.0",
   "description": "My Tiny Tools",
-  "manifest_version": 2,
+  "manifest_version": 3,
   "author": "Kun Zhou",
   "icons": { "128": "icon.png" },
-  "browser_action": {
+  "action": {
     "default_popup": "popup.html",
     "default_title": "My Tiny Tools",
     "default_icon": "icon.png"
   },
   "background": {
-    "scripts": ["background.js"]
+    "service_worker": "background.js",
+    "type": "module"
   }
 }
